@@ -47,6 +47,8 @@ metrics = {
     "confusion_matrix": confusion_matrix(y_test, y_pred).tolist()
 }
 
+X = X.reset_index(drop=True)
+
 probabilities = model.predict_proba(X)[:, 1] * 100
 
 machines = []
