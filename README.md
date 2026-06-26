@@ -1,36 +1,234 @@
-### Week 1: Data Preparation, Feature Engineering and Initial Model Building
+# Contextual Predictive Maintenance
 
-In the first week, we focused on understanding the predictive maintenance problem and preparing the dataset for machine learning.
+A machine learning-based predictive maintenance system that estimates the probability of machine failure by combining machine sensor data with contextual information. The project provides an interactive dashboard for monitoring machine health, visualizing failure probabilities, and evaluating model performance.
 
-We started by studying the machine sensor data such as air temperature, process temperature, rotational speed, torque, tool wear, and failure labels. The main objective was to identify whether a machine is likely to fail based on these operational parameters.
+---
 
-The dataset was cleaned by checking missing values, duplicate records, incorrect values, and data imbalance. Since machine failure cases are usually fewer than normal cases, class imbalance was considered as an important challenge.
+# Problem Statement
 
-After data cleaning, exploratory data analysis was performed to understand the relationship between sensor parameters and machine failure. Important patterns such as high torque, high tool wear, abnormal temperature, and speed variations were analyzed.
+Industries commonly rely on either scheduled maintenance or reactive maintenance, both of which can lead to unnecessary servicing, unexpected machine failures, increased downtime, and higher maintenance costs.
 
-Feature engineering was also done to improve model performance. Useful derived features were created from the available sensor data to help the model understand machine behavior better.
+Traditional predictive maintenance systems primarily use internal machine sensor data while overlooking external contextual factors such as operating conditions, ambient temperature, and machine load.
 
-After preparing the data, we split it into training and testing sets. Basic machine learning models were tested first to create a baseline performance. This helped us understand how well simple models could predict machine failure.
+This project addresses these limitations by integrating machine telemetry with contextual information to predict machine failures before they occur.
 
-By the end of Week 1, the dataset was cleaned, analyzed, prepared, and ready for advanced model training.
+---
 
-### Week 2: LightGBM Training, Evaluation and Dashboard Integration
+# Objectives
 
-In the second week, we focused on training the final predictive maintenance model and integrating it with the dashboard.
+- Predict machine failures before breakdown.
+- Reduce unexpected machine downtime.
+- Improve maintenance planning and scheduling.
+- Visualize machine health using an interactive dashboard.
+- Display model performance using multiple evaluation metrics.
 
-LightGBM was selected as the main machine learning model because it performs well on structured/tabular data, handles large datasets efficiently, and provides good accuracy with faster training time. It is suitable for predictive maintenance because it can learn complex relationships between machine parameters and failure conditions.
+---
 
-The LightGBM model was trained using the processed training data. Important parameters such as learning rate, number of estimators, maximum depth, and class weight were considered to improve model performance and reduce false predictions.
+# Scope
 
-After training, the model was tested on unseen data. Evaluation metrics such as accuracy, precision, recall, F1-score, confusion matrix, and failure prediction performance were checked. Since failure detection is more important than only overall accuracy, recall and F1-score were given more importance.
+This project serves as a prototype for predictive maintenance using machine learning.
 
-The trained model was then saved and connected with the dashboard. The dashboard allows users to enter or view machine sensor values and get predictions about whether the machine is in normal condition or at risk of failure.
+It includes:
 
-The dashboard also displays useful outputs such as failure prediction result, probability/risk level, and important parameters affecting the prediction. This makes the system more understandable and useful for real-time maintenance decisions.
+- Machine health dashboard
+- Failure probability prediction
+- Machine monitoring
+- Performance visualization
+- Maintenance alerts
 
-By the end of Week 2, the LightGBM model was trained, evaluated, saved, and integrated into the predictive maintenance dashboard.
+> **Note:** Contextual information used in this project is simulated for demonstration purposes.
 
-## Final Outcome
+---
 
-The project successfully builds a contextual predictive maintenance system using machine learning. It predicts possible machine failure using sensor-based operational data and presents the result through an interactive dashboard. The system helps in moving from reactive maintenance to proactive maintenance, reducing unexpected breakdowns and improving machine reliability.
+# Technologies Used
+
+## Frontend
+
+- React
+- Vite
+- TypeScript
+- Tailwind CSS
+- Lucide React Icons
+
+## Machine Learning
+
+- Python
+- Pandas
+- NumPy
+- Scikit-learn
+- LightGBM
+- SMOTE (Imbalanced Learning)
+
+## Visualization
+
+- Recharts
+- Confusion Matrix
+- Precision-Recall Curve
+- ROC Curve
+
+---
+
+# System Workflow
+
+```text
+Machine Sensor Data
+        │
+        ▼
+Data Preprocessing
+        │
+        ▼
+Feature Engineering
+        │
+        ▼
+Contextual Data Fusion
+        │
+        ▼
+LightGBM Prediction Model
+        │
+        ▼
+Failure Probability
+        │
+        ▼
+Dashboard Visualization
 ```
+
+---
+
+# Machine Learning Pipeline
+
+1. Load the dataset
+2. Perform data preprocessing
+3. Handle missing values
+4. Feature scaling
+5. Balance the dataset using SMOTE
+6. Train the LightGBM classifier
+7. Evaluate model performance
+8. Export predictions
+
+---
+
+# Performance Metrics
+
+The model is evaluated using:
+
+- Accuracy
+- Precision
+- Recall
+- Macro F1 Score
+- ROC-AUC Score
+- Confusion Matrix
+
+---
+
+# Dashboard Features
+
+- Machine Health Monitoring
+- Failure Probability Prediction
+- Machine Status Overview
+- Performance Metrics Visualization
+- Interactive Charts
+- Maintenance Alerts
+
+---
+
+# Advantages
+
+- Easy-to-understand dashboard
+- Interactive monitoring interface
+- Predictive maintenance visualization
+- Modular project architecture
+- Scalable design for future enhancements
+
+---
+
+# Limitations
+
+- Uses a public dataset instead of real industrial sensor data.
+- External contextual information is simulated.
+- Prototype focuses on prediction and visualization rather than production deployment.
+- No real-time IoT device integration.
+
+---
+
+# Future Enhancements
+
+- Live IoT sensor integration
+- MQTT-based communication
+- NVIDIA Jetson Edge AI deployment
+- Cloud synchronization
+- Email and SMS maintenance alerts
+- Digital Twin integration
+- Real-time streaming dashboards
+
+---
+
+# Expected Outcome
+
+The system predicts potential machine failures using machine learning and presents the results through an intuitive dashboard. This enables maintenance teams to identify high-risk machines, prioritize maintenance activities, reduce downtime, and improve operational efficiency.
+
+---
+
+# Project Structure
+
+```
+Contextual_Predictive_Maintenance/
+│
+├── backend/
+│   ├── model/
+│   ├── dataset/
+│   ├── training/
+│   ├── prediction/
+│   └── evaluation/
+│
+├── frontend/
+│   ├── src/
+│   ├── components/
+│   ├── pages/
+│   └── assets/
+│
+├── saved_models/
+│
+├── reports/
+│
+├── README.md
+│
+└── requirements.txt
+```
+
+---
+
+# Model
+
+- **Algorithm:** LightGBM Classifier
+- **Class Imbalance Handling:** SMOTE
+- **Evaluation Metrics:** Accuracy, Precision, Recall, Macro F1, ROC-AUC
+
+---
+
+# Applications
+
+- Manufacturing Industry
+- Smart Factories
+- Industrial IoT
+- Automotive Maintenance
+- Predictive Asset Monitoring
+- Industry 4.0 Solutions
+
+---
+
+# Future Deployment
+
+The project can be extended for deployment on:
+
+- NVIDIA Jetson Edge Devices
+- Industrial IoT Gateways
+- Cloud Platforms
+- Smart Manufacturing Systems
+
+---
+
+# Author
+
+**Srimani Deepika Krishna Chintalapudi**
+
+Contextual Predictive Maintenance using Machine Learning and Interactive Dashboard Visualization.
