@@ -1,3 +1,4 @@
+import joblib
 import pandas as pd
 import numpy as np
 
@@ -40,7 +41,6 @@ X = df.drop(
 )
 
 y = df['Machine failure']
-y = df['Machine failure']
 
 X.columns = [
     'Air_temperature',
@@ -72,10 +72,6 @@ model.fit(X_train, y_train)
 
 print("Model trained successfully!")
 
-model.fit(X_train, y_train)
-
-print("Model trained successfully!")
-
 # Make predictions
 y_pred = model.predict(X_test)
 
@@ -94,3 +90,28 @@ cm = confusion_matrix(y_test, y_pred)
 
 print("\nConfusion Matrix:")
 print(cm)
+
+# Plot Confusion Matrix
+plt.figure(figsize=(6,5))
+
+sns.heatmap(
+    cm,
+    annot=True,
+    fmt="d",
+    cmap="Blues",
+    xticklabels=["No Failure", "Failure"],
+    yticklabels=["No Failure", "Failure"]
+)
+
+plt.xlabel("Predicted")
+plt.ylabel("Actual")
+plt.title("Confusion Matrix")
+
+plt.savefig("confusion_matrix.png")
+
+plt.show()
+
+# Save trained model
+joblib.dump(model, "lightgbm_model.pkl")
+
+print("Model saved successfully as lightgbm_model.pkl")
