@@ -110,8 +110,21 @@ plt.title("Confusion Matrix")
 plt.savefig("confusion_matrix.png")
 
 plt.show()
-
 # Save trained model
 joblib.dump(model, "lightgbm_model.pkl")
 
 print("Model saved successfully as lightgbm_model.pkl")
+
+import json
+
+metrics = {
+    "accuracy": round(accuracy, 4),
+    "precision": round(precision, 4),
+    "recall": round(recall, 4),
+    "f1_score": round(f1, 4)
+}
+
+with open("metrics.json", "w") as file:
+    json.dump(metrics, file, indent=4)
+
+print("Metrics saved successfully as metrics.json")
