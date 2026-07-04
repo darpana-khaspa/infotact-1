@@ -128,3 +128,13 @@ with open("metrics.json", "w") as file:
     json.dump(metrics, file, indent=4)
 
 print("Metrics saved successfully as metrics.json")
+
+import pandas as pd
+
+importance = pd.DataFrame({
+    "feature": X.columns,
+    "importance": model.feature_importances_
+})
+
+importance.to_csv("feature_importance.csv", index=False)
+print("Feature importance saved.")
