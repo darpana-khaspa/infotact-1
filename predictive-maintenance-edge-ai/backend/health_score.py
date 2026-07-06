@@ -1,31 +1,56 @@
 def calculate_health_score(failure_probability):
     """
-    Converts failure probability into a machine health score.
+    Calculate machine health score from failure probability.
 
-    failure_probability should be between 0 and 1.
-    Example: 0.25 means 25% failure risk.
+    Parameters:
+        failure_probability (float): Value between 0 and 1.
+
+    Returns:
+        float: Health score (0-100)
+    """
+    failure_probability = max(0.0, min(1.0, failure_probability))
+    return round((1 - failure_probability) * 100, 2)
+
+
+def get_machine_health(failure_probability):
+    """
+    Returns machine health details based on failure probability.
     """
 
-    failure_probability = max(0, min(1, failure_probability))
+    score = calculate_health_score(failure_probability)
 
-    health_score = (1 - failure_probability) * 100
+    if score >= 80:
+        return {
+            "health_score": score,
+            "risk_level": "Low",
+            "status": "Healthy",
+            "color": "green",
+            "recommendation": "Machine is operating normally."
+        }
 
-    return round(health_score, 2)
+    elif score >= 60:
+        return {
+            "health_score": score,
+            "risk_level": "Medium",
+            "status": "Monitor",
+            "color": "yellow",
+            "recommendation": "Inspect the machine during the next maintenance cycle."
+        }
 
-
-def get_health_status(health_score):
-    """
-    Returns machine health status based on health score.
-    """
-
-    if health_score >= 80:
-        return "Healthy"
-
-    elif health_score >= 60:
-        return "Moderate"
-
-    elif health_score >= 40:
-        return "Warning"
+    elif score >= 40:
+        return {
+            "health_score": score,
+            "risk_level": "High",
+            "status": "Warning",
+            "color": "orange",
+            "recommendation": "Schedule maintenance as soon as possible."
+        }
 
     else:
-        return "Critical"
+        return {
+            "health_score": score,
+            "risk_level": "Critical",
+            "status": "Critical",
+            "color": "red",
+            "recommendation": "Stop the machine immediately and perform maintenance."
+        }
