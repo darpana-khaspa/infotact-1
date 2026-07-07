@@ -138,3 +138,6 @@ importance = pd.DataFrame({
 
 importance.to_csv("feature_importance.csv", index=False)
 print("Feature importance saved.")
+
+print(f"Training samples: {len(X_train)}")
+print(f"Testing samples: {len(X_test)}")
