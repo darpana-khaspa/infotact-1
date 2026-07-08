@@ -143,3 +143,6 @@ print(f"Training samples: {len(X_train)}")
 print(f"Testing samples: {len(X_test)}")
 
 print(f"Training LightGBM with random_state={42}")
+
+metrics["train_samples"] = len(X_train)
+metrics["test_samples"] = len(X_test)
