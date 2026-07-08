@@ -141,3 +141,5 @@ print("Feature importance saved.")
 
 print(f"Training samples: {len(X_train)}")
 print(f"Testing samples: {len(X_test)}")
+
+print(f"Training LightGBM with random_state={42}")
