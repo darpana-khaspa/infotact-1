@@ -146,3 +146,10 @@ print(f"Training LightGBM with random_state={42}")
 
 metrics["train_samples"] = len(X_train)
 metrics["test_samples"] = len(X_test)
+
+params = model.get_params()
+
+with open("model_params.json", "w") as file:
+    json.dump(params, file, indent=4)
+
+print("Model parameters saved as model_params.json")
